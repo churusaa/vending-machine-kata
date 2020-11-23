@@ -1,11 +1,58 @@
-Vending Machine Kata
-====================
+# Vending Machine Kata
+###### Based on [Guy Royse's version.](https://github.com/guyroyse/vending-machine-kata)
+
 
 In this exercise you will build the brains of a vending machine.  It will accept money, make change, maintain
 inventory, and dispense products.  All the things that you might expect a vending machine to accomplish.
 
 The point of this kata to to provide a larger than trivial exercise that can be used to practice TDD.  A significant
 portion of the effort will be in determining what tests should be written and, more importantly, written next.
+
+We have included the Spring Framework to allow practice of using a dependency injection framework, integration testing 
+and creating a RESTful API to make requests against.
+
+Start with simple unit tests and create classes that work together and core functionality is achieved before moving on 
+to getting it to work in Spring.
+
+Development Practices For Interview Katas
+=====================
+Make Frequent Commits
+---------------------
+Use the Red -> Green -> Refactor cycle to help drive commits.
+- Pass a test -> Make a commit!
+- Refactor -> Make a commit!
+
+Use Feature Branching
+---------------------
+The features listed below can all be done in feature branches for git workflow practice.  Open a pull request to the 
+'dev' branch when the feature is done.
+
+Use Descriptive Commit Messages
+-------------------------------
+This is a good practice for interview katas, you don't want to be seen as a developer that writes "Another commit" on 
+the projects third commit.  
+
+Some tips:
+- **Use multi-line commit messages with Git Bash.**  After you have entered the title of your commit, don't close the 
+String, hit 'Enter/Return' twice to add a couple new lines and then you can enter comments in addition to your commit 
+title. 
+- **Don't know what to say? Use the test title!**  Use the test title for you commit title, but make it readable, don't 
+use camel case.  Sometimes a commit won't have comments, that's ok, the first couple tests might not change much in the 
+system, let the test title convey the meaning of the commit in that case.
+- **"I FORGOT TO COMMIT SINCE 6 TESTS AGO!"** Better late than never!
+- **Changed a bunch of stuff during refactoring?** Be specific about which files are being commited using `git add 
+<filename>` instead of `git add .`.  You can add more than one file to a commit with this command.  This will allow you 
+to make smaller commits and focus your commit message on those specific files.
+
+Have a Plan
+-----------
+Make a plan, but keep it general.  The beautiful thing about TDD is that sometimes a more simple solution presents 
+itself.
+
+Practice OOP Principles
+-----------------------
+This is a great exercise for the SOLID principles of Object Orientated Programming.  Read about them and see if you can 
+use them in this exercise.
 
 Features
 ========
@@ -25,6 +72,10 @@ NOTE: The temptation here will be to create Coin objects that know their value. 
   vending machine works.  Instead, it identifies coins by their weight and size and then assigns a value to what
   was inserted.  You will need to do something similar.  This can be simulated using strings, constants, enums,
   symbols, or something of that nature.
+  
+  NOTE's Note: There has been some argument in our organization about whether or not this is worthy of your time, I 
+  (Ben) think there is value to using a String and having the Vending Machine assign a value to that String.  I have 
+  spent hours in the rabbit hole of what a coin is, when in reality, a String would have been just as good. 
 
 Select Product
 --------------
@@ -78,3 +129,26 @@ _So that I can determine if I can buy something with the money I have before ins
 
 When the machine is not able to make change with the money in the machine for any of the items that it sells, it will
 display EXACT CHANGE ONLY instead of INSERT COIN.
+
+BONUS FEATURES
+==============
+API Requests
+------------
+
+_As a Game Dev,_
+_I want to be able to use this software across the web,_
+_So that I can create a client for users to interact with._
+
+Create a controller that interacts with a VendingMachine object and receives and sends information about the state of 
+application via HTTP.
+
+Additional Features
+-------------------
+
+_As a Player,_
+_I want to control more of the machine's state,_
+_So that I can simulate being a vending machine servicer._
+
+- [ ] Create a way to empty and reset the machine's cash.
+- [ ] Create a way to restock the goods in the machine. 
+- [ ] Create a way to replace the item offered in a slot of the machine's offerings.
